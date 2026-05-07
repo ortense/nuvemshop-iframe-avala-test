@@ -7,7 +7,6 @@ const BASE_URL = "http://localhost:5500";
 export function App(nube: NubeSDK) {
 	const iframe = (
 		<Iframe
-			id="test-iframe"
 			src={`${BASE_URL}/static/` as `https://${string}`}
 			height={200}
 			width="100%"
