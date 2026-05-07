@@ -1,21 +1,20 @@
 import { Iframe } from "@tiendanube/nube-sdk-jsx";
 import type { NubeSDK, UISlot } from "@tiendanube/nube-sdk-types";
 
+// my local server
 const BASE_URL = "http://localhost:5500";
 
 export function App(nube: NubeSDK) {
 	const iframe = (
 		<Iframe
 			id="test-iframe"
-			src={
-				`${BASE_URL}/widgetsLoader/storeSnippets.html` as `https://${string}`
-			}
+			src={`${BASE_URL}/static/` as `https://${string}`}
 			height={200}
 			width="100%"
 			onMessage={(event) => {
 				const data = event.value;
 
-				console.log("[PARENT] message from iframe:", data);
+				console.log("[AVALA PARENT] message from iframe:", data);
 
 				if (!data || data.source !== "AVALA_WIDGET") {
 					return;
@@ -32,5 +31,5 @@ export function App(nube: NubeSDK) {
 		/>
 	);
 
-	nube.render("after_product_detail_add_to_cart" as UISlot, iframe);
+	nube.render("before_main_content", iframe);
 }

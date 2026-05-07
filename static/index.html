@@ -1,10 +1,10 @@
 <!doctype html>
 <html>
-<body>
+<body style="background: #f0f0f0; color: #333;">
 <h1>Iframe loaded</h1>
 
 <script>
-  console.log('[IFRAME] loaded');
+  console.log('[AVALA IFRAME] loaded');
 
   window.parent.postMessage(
     {
@@ -17,11 +17,13 @@
   window.addEventListener('message', (event) => {
     const data = event.data;
 
+    console.log('[AVALA IFRAME] received message event:', event);
+
     if (!data || data.source !== 'AVALA_NUBE') {
       return;
     }
 
-    console.log('[IFRAME] received from parent:', data);
+    console.log('[AVALA IFRAME] received from parent:', data);
   });
 </script>
 </body>
