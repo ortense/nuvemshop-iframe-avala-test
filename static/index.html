@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<body>
+<h1>Iframe loaded</h1>
+
+<script>
+  console.log('[IFRAME] loaded');
+
+  window.parent.postMessage(
+    {
+      source: 'AVALA_WIDGET',
+      type: 'READY',
+    },
+    '*'
+  );
+
+  window.addEventListener('message', (event) => {
+    const data = event.data;
+
+    if (!data || data.source !== 'AVALA_NUBE') {
+      return;
+    }
+
+    console.log('[IFRAME] received from parent:', data);
+  });
+</script>
+</body>
+</html>
